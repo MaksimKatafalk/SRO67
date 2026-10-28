@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Привет! Мой сайт работает на Docker и AWS</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        .calculator { margin-top: 30px; padding: 20px; border: 1px solid #ccc; width: 300px; border-radius: 5px; background: #f9f9f9; }
+        input, button { padding: 8px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <h1>Привет! Мой сайт работает на Docker и AWS</h1>
+    <p>Это страница для самостоятельной работы.</p>
+
+    <div class="calculator">
+        <h3>Простой калькулятор</h3>
+        <input type="number" id="num1" placeholder="Введите первое число">
+        <input type="number" id="num2" placeholder="Введите второе число">
+        <button onclick="calculate('+')">Сложить (+)</button>
+        <button onclick="calculate('-')">Вычесть (-)</button>
+        <button onclick="calculate('*')">Умножить (*)</button>
+        <button onclick="calculate('/')">Разделить (/)</button>
+        <h4 id="result">Результат: </h4>
+    </div>
+
+    <script>
+        function calculate(operator) {
+            let n1 = parseFloat(document.getElementById('num1').value);
+            let n2 = parseFloat(document.getElementById('num2').value);
+            let res;
+
+            if (isNaN(n1) || isNaN(n2)) {
+                document.getElementById('result').innerText = "Введите оба числа!";
+                return;
+            }
+
+            switch(operator) {
+                case '+': res = n1 + n2; break;
+                case '-': res = n1 - n2; break;
+                case '*': res = n1 * n2; break;
+                case '/': 
+                    res = n2 !== 0 ? n1 / n2 : "Ошибка (деление на ноль)"; 
+                    break;
+            }
+            document.getElementById('result').innerText = "Результат: " + res;
+        }
+    </script>
+</body>
+</html>
